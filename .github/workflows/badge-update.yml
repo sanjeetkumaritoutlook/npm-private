@@ -1,0 +1,45 @@
+name: AWS CodeArtifact Badge Update 🚀
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  update-badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
+
+      - name: Get Latest Version from CodeArtifact
+        id: get_version
+        run: |
+          VERSION=$(aws codeartifact list-package-versions \
+            --domain sanjeet-registry \
+            --repository my-private-npm \
+            --package @my-scope/hello-package \
+            --format npm \
+            --status PUBLISHED \
+            --query 'versions[0]' \
+            --output text)
+          echo "LATEST_VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Update README.md with Latest Version Badge
+        run: |
+          sed -i "s/AWS%20CodeArtifact-v[0-9]*\.[0-9]*\.[0-9]*/AWS%20CodeArtifact-v${{ env.LATEST_VERSION }}/g" README.md
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions Bot"
+          git add README.md
+          git commit -m "chore: update AWS CodeArtifact badge with version ${{ env.LATEST_VERSION }}"
+          git push

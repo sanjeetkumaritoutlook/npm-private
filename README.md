@@ -2,7 +2,9 @@
 
 This is a basic npm package that greets people. Its published in AWS CodeArtifact Free Tier
 
-![AWS CodeArtifact Status](https://img.shields.io/badge/AWS%20CodeArtifact-Status-success?logo=amazon&style=for-the-badge)
+![AWS CodeArtifact Version](https://img.shields.io/npm/v/@my-scope/hello-package?style=for-the-badge&registry=https://sanjeet-registry-612233812744.d.codeartifact.ap-south-1.amazonaws.com/npm/my-private-npm/)
+
+![AWS CodeArtifact Version](https://github.com/sanjeetkumarit/private-npm/actions/workflows/badge-update.yml/badge.svg)
 
 
 ## other ways to set
