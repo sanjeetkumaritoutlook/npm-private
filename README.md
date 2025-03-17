@@ -42,11 +42,11 @@ Adding a farewell message.
 
 in vanilla JS/TS:
 
-const { greet, farewell } = require('@my-scope/hello-package');
+const { greet, farewell, getCurrentDate, toUpperCase, getRandomNumber,toLowerCase } = require('@my-scope/hello-package');
 
 in Angular, React:
 
-import { greet, farewell } from '@my-scope/hello-package';
+import { greet, farewell, getCurrentDate, toUpperCase, getRandomNumber,toLowerCase } from '@my-scope/hello-package';
 
 ## unit test using jest
 
