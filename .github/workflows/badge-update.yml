@@ -35,15 +35,16 @@ jobs:
       - name: Get Latest Version from CodeArtifact
         id: get_version
         run: |
-          VERSION=$(aws codeartifact list-package-versions \
-             --domain sanjeet-registry \
-             --repository my-private-npm \
-             --package hello-package \ # Remove @my-scope/
-             --format npm \
-             --status Published \ # Fix the "PUBLISHED" enum issue (AWS expects 'Published' instead of 'PUBLISHED')
-             --query 'versions[0]' \
-             --output text)
-          echo "LATEST_VERSION=$VERSION" >> $GITHUB_ENV
+            VERSION="$(aws codeartifact list-package-versions \
+                --domain sanjeet-registry \
+                --repository my-private-npm \
+                --package hello-package \
+                --format npm \
+                --status Published \
+                --query 'versions[0]' \
+                --output text)"
+            echo "LATEST_VERSION=$VERSION" >> $GITHUB_ENV
+
 
       - name: Update README.md with Latest Version Badge
         run: |
