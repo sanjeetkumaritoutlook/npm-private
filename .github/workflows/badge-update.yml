@@ -46,7 +46,15 @@ jobs:
                 --output text | tr -d '\n' | tr -d '\r')"
             echo "LATEST_VERSION=$VERSION" >> $GITHUB_ENV
 
-
+      - name: Generate version.json
+        run: |
+         echo '{
+          "schemaVersion": 1,
+          "label": "AWS CodeArtifact",
+          "message": "'${VERSION}'",
+          "color": "green"
+         }' > version.json
+        
       - name: Update README.md with Latest Version Badge
         run: |
           sed -i "s/AWS%20CodeArtifact-v[0-9]*\.[0-9]*\.[0-9]*/AWS%20CodeArtifact-v${{ env.LATEST_VERSION }}/g" README.md
@@ -56,12 +64,12 @@ jobs:
           git add .
           git status    
 
-      - name: Commit and Push Changes
+      - name: Commit Changes
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions Bot"
           git commit -m "🔖 chore: update AWS CodeArtifact badge with version ${{ env.LATEST_VERSION }} 🚀" || echo "No changes to commit"
-          git push
+         
 
       - name: Push changes to GitHub
         env:
