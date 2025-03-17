@@ -1,10 +1,6 @@
-name: AWS CodeArtifact Badge Update 🚀
+name: AWS CodeArtifact Badge Update  (Only on Manual Run)🚀
 
 on:
-  push:
-    branches:
-      - main
-
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:
@@ -42,38 +38,24 @@ jobs:
                 --package 'hello-package' \
                 --namespace 'my-scope' \
                 --status Published \
-                --query 'versions[0]' \
-                --output text | tr -d '\n' | tr -d '\r')"
-            echo "LATEST_VERSION=$VERSION" >> $GITHUB_ENV
+                --query 'versions[*].version' \
+                --output text | tr ' ' '\n' | sort -V | tail -n 1)
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
 
          
       - name: Fetch and update version.json with latest version
         run: |
-         VERSION=$(aws codeartifact list-package-versions \
-            --domain sanjeet-registry \
-            --repository my-private-npm \
-            --format npm \
-            --package 'hello-package' \
-            --namespace 'my-scope' \
-            --status Published \
-            --query 'versions[].version | sort(@) | [-1]' \
-            --output text)
-          
-         echo "Latest version: $VERSION"
-         
          echo '{
             "schemaVersion": 1,
             "label": "AWS CodeArtifact",
             "message": "'${VERSION}'",
             "color": "green"
           }' > version.json
-   
         
       - name: Update README.md with Latest Version Badge
         run: |
-            VERSION=$(jq -r '.message' version.json)  # Extract version from version.json
-            echo "Latest version from version.json: $VERSION"
-            sed -i "s/AWS%20CodeArtifact-v[0-9]*\.[0-9]*\.[0-9]*/AWS%20CodeArtifact-v${VERSION}/g" README.md
+             sed -i "s/AWS%20CodeArtifact-v[0-9]*\.[0-9]*\.[0-9]*/AWS%20CodeArtifact-v'${VERSION}'/g" README.md
+          
 
           
       - name: Add changes
@@ -85,7 +67,7 @@ jobs:
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions Bot"
-          git commit -m "🔖 chore: update AWS CodeArtifact badge with version ${{ env.LATEST_VERSION }} 🚀" || echo "No changes to commit"
+          git commit -m "🔖 chore: update AWS CodeArtifact badge with version '${VERSION}' 🚀" || echo "No changes to commit"
          
 
       - name: Push changes to GitHub
