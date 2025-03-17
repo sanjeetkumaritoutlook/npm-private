@@ -4,7 +4,7 @@ This is a basic npm package that greets people. Its published in AWS CodeArtifac
 
 ![AWS CodeArtifact Version](https://img.shields.io/npm/v/@my-scope/hello-package?style=for-the-badge&registry=https://sanjeet-registry-612233812744.d.codeartifact.ap-south-1.amazonaws.com/npm/my-private-npm/)
 
-![AWS CodeArtifact Version](https://github.com/sanjeetkumarit/private-npm/raw/main/version.json)
+![AWS CodeArtifact Version](https://github.com/sanjeetkumaritoutlook/private-npm/blob/main/version.json)
 
 
 
