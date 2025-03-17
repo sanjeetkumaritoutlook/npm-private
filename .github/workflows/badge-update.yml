@@ -64,9 +64,10 @@ jobs:
             --package 'hello-package' \
             --namespace 'my-scope' \
             --status Published \
-            --query 'versions | sort(@) | [-1]' \
+            --query 'versions[].version | sort(@) | [-1]' \
             --output text)
-    
+          
+         echo "Latest version: $VERSION"
          jq --arg version "$VERSION" '.message = $version' version.json > temp.json && mv temp.json version.json
    
         
