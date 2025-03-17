@@ -55,7 +55,7 @@ jobs:
         
       - name: Update README.md with Latest Version Badge
         run: |
-             sed -i "s/AWS%20CodeArtifact-v[0-9]*\.[0-9]*\.[0-9]*/AWS%20CodeArtifact-v'${VERSION}'/g" README.md
+           sed -i "s/AWS%20CodeArtifact-v[0-9]*\.[0-9]*\.[0-9]*/AWS%20CodeArtifact-v${VERSION}/g" README.md
           
 
           
