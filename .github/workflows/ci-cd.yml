@@ -20,6 +20,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}  
+          
+      - name: Check npm registry
+        run: npm config get registry
+    
 
       - name: Install dependencies
         run: npm install

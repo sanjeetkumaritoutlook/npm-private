@@ -10,6 +10,11 @@ npm set registry https://registry.npmjs.org/
 
 npm config set registry https://repo.forge.lmig.com/artifactory/api/npm/npm/ 
 
+## check which registry
+
+npm config get registry
+
+
 ## more advanced with additional functionalities like:
 
 Greeting based on time (Morning, Afternoon, Evening). 
