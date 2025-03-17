@@ -43,7 +43,7 @@ jobs:
                 --namespace 'my-scope' \
                 --status Published \
                 --query 'versions[0]' \
-                --output text)"
+                --output text | tr -d '\n' | tr -d '\r')"
             echo "LATEST_VERSION=$VERSION" >> $GITHUB_ENV
 
 
