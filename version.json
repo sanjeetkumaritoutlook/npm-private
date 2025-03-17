@@ -1,6 +1,6 @@
 {
- "schemaVersion": 1,
- "label": "AWS CodeArtifact",
- "message": "",
- "color": "green"
+  "schemaVersion": 1,
+  "label": "AWS CodeArtifact",
+  "message": "1.0.9",
+  "color": "green"
 }
