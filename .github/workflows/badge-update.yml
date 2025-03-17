@@ -39,7 +39,7 @@ jobs:
                 --namespace 'my-scope' \
                 --status Published \
                 --query "versions[*].version" \
-                --output text | tr ' ' '\n' | sort -V | tail -n 1)
+                --output json | jq -r '.[]' | sort -V | tail -n 1)
               
               echo "VERSION=$VERSION" >> $GITHUB_ENV
 

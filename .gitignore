@@ -12,6 +12,7 @@
 npm-debug.log
 yarn-error.log
 awscliv2.zip
+version.json
 
 # IDEs and editors
 .idea/
