@@ -16,6 +16,8 @@ npm set registry https://registry.npmjs.org/
 
 npm config set registry https://repo.forge.lmig.com/artifactory/api/npm/npm/ 
 
+npm config set registry https://sanjeet-registry-612233812744.d.codeartifact.ap-south-1.amazonaws.com/npm/my-private-npm/
+
 new  registry-url: https://sanjeet-registry-612233812744.d.codeartifact.ap-south-1.amazonaws.com/npm/my-private-npm/
 
 
