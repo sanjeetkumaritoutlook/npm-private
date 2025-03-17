@@ -19,6 +19,10 @@ jobs:
          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
          unzip awscliv2.zip
          sudo ./aws/install --update
+         
+      - name: Set AWS Region
+        run: |
+          aws configure set region ap-south-1   
 
       - name: Get Latest Version from CodeArtifact
         id: get_version
