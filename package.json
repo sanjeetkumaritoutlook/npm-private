@@ -1,6 +1,6 @@
 {
   "name": "@my-scope/hello-package",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "main": "index.js",
   "scripts": {
     "test": "jest"

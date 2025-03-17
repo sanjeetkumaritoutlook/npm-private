@@ -31,16 +31,17 @@ jobs:
       - name: Get Latest Version from CodeArtifact
         id: get_version
         run: |
-            VERSION="$(aws codeartifact list-package-versions \
+             VERSION=$(aws codeartifact list-package-versions \
                 --domain sanjeet-registry \
                 --repository my-private-npm \
                 --format npm \
                 --package 'hello-package' \
                 --namespace 'my-scope' \
                 --status Published \
-                --query 'versions[*].version' \
+                --query "versions[*].version" \
                 --output text | tr ' ' '\n' | sort -V | tail -n 1)
-            echo "VERSION=$VERSION" >> $GITHUB_ENV
+              
+              echo "VERSION=$VERSION" >> $GITHUB_ENV
 
          
       - name: Fetch and update version.json with latest version
