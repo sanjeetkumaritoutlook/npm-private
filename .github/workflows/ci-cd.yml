@@ -39,16 +39,20 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      - name: Login to AWS CodeArtifact
+      - name: Login NPM with AWS CodeArtifact
         run: |
           aws codeartifact login \
             --tool npm \
             --repository my-private-npm \
             --domain sanjeet-registry \
             --domain-owner 612233812744
+            
+      - name: Bump Version
+        run: |
+          npm version patch --no-git-tag-version      
 
       - name: Publish to AWS CodeArtifact
-        run: npm publish
+        run: npm publish --access public
         
       - name: Update Badge Status
         run: |
