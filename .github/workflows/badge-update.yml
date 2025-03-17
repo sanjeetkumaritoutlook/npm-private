@@ -50,11 +50,15 @@ jobs:
       - name: Update README.md with Latest Version Badge
         run: |
           sed -i "s/AWS%20CodeArtifact-v[0-9]*\.[0-9]*\.[0-9]*/AWS%20CodeArtifact-v${{ env.LATEST_VERSION }}/g" README.md
+          
+      - name: Add changes
+        run: |
+          git add .
+          git status    
 
       - name: Commit and Push Changes
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions Bot"
-          git add README.md
-          git commit -m "chore: update AWS CodeArtifact badge with version ${{ env.LATEST_VERSION }}"
+          git commit -m "🔖 chore: update AWS CodeArtifact badge with version ${{ env.LATEST_VERSION }} 🚀" || echo "No changes to commit"
           git push
