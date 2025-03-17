@@ -46,16 +46,8 @@ jobs:
                 --output text | tr -d '\n' | tr -d '\r')"
             echo "LATEST_VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Generate version.json
-        run: |
-         echo '{
-          "schemaVersion": 1,
-          "label": "AWS CodeArtifact",
-          "message": "'${VERSION}'",
-          "color": "green"
-         }' > version.json
          
-      - name: Update version.json with latest version
+      - name: Fetch and update version.json with latest version
         run: |
          VERSION=$(aws codeartifact list-package-versions \
             --domain sanjeet-registry \
@@ -68,12 +60,21 @@ jobs:
             --output text)
           
          echo "Latest version: $VERSION"
-         jq --arg version "$VERSION" '.message = $version' version.json > temp.json && mv temp.json version.json
+         
+         echo '{
+            "schemaVersion": 1,
+            "label": "AWS CodeArtifact",
+            "message": "'${VERSION}'",
+            "color": "green"
+          }' > version.json
    
         
       - name: Update README.md with Latest Version Badge
         run: |
-          sed -i "s/AWS%20CodeArtifact-v[0-9]*\.[0-9]*\.[0-9]*/AWS%20CodeArtifact-v${{ env.LATEST_VERSION }}/g" README.md
+            VERSION=$(jq -r '.message' version.json)  # Extract version from version.json
+            echo "Latest version from version.json: $VERSION"
+            sed -i "s/AWS%20CodeArtifact-v[0-9]*\.[0-9]*\.[0-9]*/AWS%20CodeArtifact-v${VERSION}/g" README.md
+
           
       - name: Add changes
         run: |
