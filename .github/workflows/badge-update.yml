@@ -39,7 +39,8 @@ jobs:
                 --domain sanjeet-registry \
                 --repository my-private-npm \
                 --format npm \
-                --package '@my-scope%2fhello-package' \
+                --package 'hello-package' \
+                --namespace 'my-scope' \
                 --status Published \
                 --query 'versions[0]' \
                 --output text)"
