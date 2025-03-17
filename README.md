@@ -2,9 +2,9 @@
 
 This is a basic npm package that greets people. Its published in AWS CodeArtifact Free Tier
 
-https://img.shields.io/badge/dynamic/json?style=for-the-badge&label=AWS%20CodeArtifact%20Version&query=$.version&url=https://raw.githubusercontent.com/sanjeetkumaritoutlook/private-npm/main/version.json)
+![AWS CodeArtifact Version](https://img.shields.io/badge/dynamic/json?style=for-the-badge&label=AWS%20CodeArtifact%20Version&query=$.version&url=https://raw.githubusercontent.com/sanjeetkumaritoutlook/private-npm/main/version.json)
 
-https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsanjeetkumaritoutlook%2Fprivate-npm%2Fmain%2Fversion.json&label=AWS%20CodeArtifact&query=%24.message&color=green
+![AWS CodeArtifact Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsanjeetkumaritoutlook%2Fprivate-npm%2Fmain%2Fversion.json&label=AWS%20CodeArtifact&query=%24.message&color=green)
 
 
 
