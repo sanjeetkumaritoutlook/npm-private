@@ -38,7 +38,7 @@ jobs:
             VERSION="$(aws codeartifact list-package-versions \
                 --domain sanjeet-registry \
                 --repository my-private-npm \
-                --package hello-package \
+                --package '@my-scope/hello-package' \
                 --format npm \
                 --status Published \
                 --query 'versions[0]' \
