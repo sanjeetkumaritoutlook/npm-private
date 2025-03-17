@@ -14,6 +14,10 @@ npm config set registry https://repo.forge.lmig.com/artifactory/api/npm/npm/
 
 npm config get registry
 
+## check complete npm configuration
+
+npm config list
+
 
 ## more advanced with additional functionalities like:
 
