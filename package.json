@@ -1,0 +1,12 @@
+{
+  "name": "@my-scope/hello-package",
+  "version": "1.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [],
+  "author": "Sanjeet Kumar",
+  "license": "MIT",
+  "description": ""
+}
