@@ -62,3 +62,9 @@ jobs:
           git config --global user.name "GitHub Actions Bot"
           git commit -m "🔖 chore: update AWS CodeArtifact badge with version ${{ env.LATEST_VERSION }} 🚀" || echo "No changes to commit"
           git push
+
+      - name: Push changes to GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main
