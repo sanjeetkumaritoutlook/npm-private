@@ -49,3 +49,10 @@ jobs:
 
       - name: Publish to AWS CodeArtifact
         run: npm publish
+        
+      - name: Update Badge Status
+        run: |
+         curl -X POST -d '{"state": "success", "description": "Published to AWS CodeArtifact"}' \
+           https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}"
+  

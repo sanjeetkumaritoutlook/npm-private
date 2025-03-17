@@ -1,6 +1,9 @@
-# My First NPM Package 🎯
+# Private NPM Package 🎯
 
-This is a basic npm package that greets people.
+This is a basic npm package that greets people. Its published in AWS CodeArtifact Free Tier
+
+![AWS CodeArtifact Status](https://img.shields.io/badge/AWS%20CodeArtifact-Status-success?logo=amazon&style=for-the-badge)
+
 
 ## other ways to set
 
