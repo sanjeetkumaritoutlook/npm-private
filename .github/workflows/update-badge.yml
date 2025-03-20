@@ -81,6 +81,7 @@ jobs:
     
          
       - name: Push changes to GitHub
+        if: false  # ❌ This step is always skipped!
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
@@ -88,7 +89,6 @@ jobs:
            git push origin HEAD:main
 
       - name: Push changes to GitHub
-        if: false  # ❌ This step is always skipped!
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
