@@ -69,12 +69,23 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions Bot"
           git commit -m "🔖 chore: update AWS CodeArtifact badge with version '${VERSION}' 🚀" || echo "No changes to commit"
+          
+      - name: Debug GitHub Token and PAT Token
+        run: |
+          echo "GitHub Token Length: ${#GITHUB_TOKEN}"
+          echo "PAT Token Length: ${#PAT_TOKEN}"
+          echo "Repository: ${{ github.repository }}"
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+
+    
          
       - name: Push changes to GitHub
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-           git push https://x-access-token:${PAT_TOKEN}@github.com/sanjeetkumaritoutlook/npm-private HEAD:main
+           git remote set-url origin https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}
+           git push origin HEAD:main
 
       - name: Push changes to GitHub
         if: false  # ❌ This step is always skipped!
