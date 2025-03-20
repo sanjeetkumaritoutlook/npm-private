@@ -70,8 +70,14 @@ jobs:
           git config --global user.name "GitHub Actions Bot"
           git commit -m "🔖 chore: update AWS CodeArtifact badge with version '${VERSION}' 🚀" || echo "No changes to commit"
          
+      - name: Push changes to GitHub
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+           git push https://x-access-token:${PAT_TOKEN}@github.com/sanjeetkumaritoutlook/npm-private HEAD:main
 
       - name: Push changes to GitHub
+        if: false  # ❌ This step is always skipped!
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
