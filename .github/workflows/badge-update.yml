@@ -33,7 +33,7 @@ jobs:
         run: |
              VERSION=$(aws codeartifact list-package-versions \
                 --domain sanjeet-registry \
-                --repository my-private-npm \
+                --repository my-npm-private \
                 --format npm \
                 --package 'hello-package' \
                 --namespace 'my-scope' \

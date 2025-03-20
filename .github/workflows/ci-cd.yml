@@ -43,7 +43,7 @@ jobs:
         run: |
           aws codeartifact login \
             --tool npm \
-            --repository my-private-npm \
+            --repository my-npm-private \
             --domain sanjeet-registry \
             --domain-owner 612233812744
             
