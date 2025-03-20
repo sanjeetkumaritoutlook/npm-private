@@ -13,6 +13,7 @@ npm-debug.log
 yarn-error.log
 awscliv2.zip
 version.json
+/aws/dist
 
 # IDEs and editors
 .idea/
